@@ -20,11 +20,10 @@
             <span asp-validation-for="StudentId" class="text-danger"></span>
         </div>*@
         <div class="mt-3">
-  <!-- My code -->   
-     <label asp-for="StudentId" class="form-label"></label>
+        <!-- My code -->   
+        <label asp-for="StudentId" class="form-label"></label>
          <select asp-for="StudentId" class="form-control" asp-items="@Model.Students">
              <option>Select Student</option>
-             
          </select>
 
         @* <!-- tried alternative code -->

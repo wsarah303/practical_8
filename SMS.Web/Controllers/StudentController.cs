@@ -53,7 +53,11 @@ namespace SMS.Web.Controllers
         [HttpPost]
         public IActionResult Create(Student s)
         {
-
+            var existing = svc.GetStudentByEmail(s.Email);
+            if (existing != null)
+            {
+                ModelState.AddModelError("Email", "This email is already registered");
+            }
 
             // complete POST action to add student
             if (ModelState.IsValid)

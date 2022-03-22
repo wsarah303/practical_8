@@ -46,25 +46,25 @@ namespace SMS.Web.Controllers
             var tvm = new TicketViewModel
             {
                 // TBC - populate select list property using list of students
-                Students = new SelectList(students, "id", "name")
-
+                Students = new SelectList(students, "Id", "Name")
+               
             };
             // render blank form passing view model as a a parameter
             return View(tvm);
         }
-       
+
         // POST /ticket/create
         [HttpPost]
         public IActionResult Create(TicketViewModel tvm)
         {
             // TBC - check if modelstate is valid and create ticket, display success alert and redirect to index
             if (ModelState.IsValid)
-        {
-             svc.CreateTicket(tvm.StudentId, tvm.Issue);
+            {
+                svc.CreateTicket(tvm.StudentId, tvm.Issue);
                 Alert($"Ticket is Created", AlertType.info);
                 return RedirectToAction(nameof(Index));
 
-        }
+            }
 
             // redisplay the form for editing
             return View(tvm);

@@ -1,3 +1,4 @@
+using SMS.Data.Validators;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -26,7 +27,8 @@ namespace SMS.Data.Models
         public double Grade { get; set; }
 
         // TBC - use UrlResource available in SMS.Data.Validators package
-        [Url]
+
+        [UrlResource]
         public string PhotoUrl { get; set; }     
 
         // Relationship 1-N tickets
