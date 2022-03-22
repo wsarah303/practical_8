@@ -37,8 +37,8 @@
                     Edit
                 </a>
 
-                <a asp-controller="Student" asp-action="Index" class="btn btn-sm btn-link">
-                    Students
+                <a asp-controller="Student" asp-action="Index"   type="button" class="btn btn-primary">
+                   Students
                 </a>
             </div>
             
@@ -66,3 +66,8 @@
 
 <!-- add Delete Modal partial -->
 
+<!-- toggle display of Delete Modal -->
+<button type="button" class="btn btn-sm btn-danger" data-bs-toggle=
+"modal"
+ data-bs-target="deleteStudentModal"><i class="bi bi-trash"></i> Delete
+</button>

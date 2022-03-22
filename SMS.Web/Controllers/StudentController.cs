@@ -34,7 +34,8 @@ namespace SMS.Web.Controllers
             if (s == null)
             {
                 // TBC - Display suitable warning alert and redirect to Index               
-                return NotFound();
+                Alert("Student Was Not Found", AlertType.info);
+                return RedirectToAction(nameof(Index));
             }
 
             // pass student as parameter to the view
@@ -52,6 +53,8 @@ namespace SMS.Web.Controllers
         [HttpPost]
         public IActionResult Create(Student s)
         {
+
+
             // complete POST action to add student
             if (ModelState.IsValid)
             {
@@ -75,9 +78,10 @@ namespace SMS.Web.Controllers
 
             // TBC check if s is null and return NotFound()
             if (s == null)
-            {               
+            {
                 // TBC - Display suitable warning alert and redirect to Index               
-                return NotFound();
+                Alert("Student Was Not Found", AlertType.info);
+                return RedirectToAction(nameof(Index));
             }   
 
             // pass student to view for editing
@@ -89,8 +93,11 @@ namespace SMS.Web.Controllers
         public IActionResult Edit(int id, Student s)
         {
             // TBC - check if the emailaddress is a duplicate and if so add a validation error
+            if (svc.IsDuplicateStudentEmail(s.Email, s.Id))
+            {
+                ModelState.AddModelError("Email", "This email is already registered");
+            }
             
-
             // complete POST action to save student changes
             if (ModelState.IsValid)
             {
@@ -115,7 +122,8 @@ namespace SMS.Web.Controllers
             if (s == null)
             {
                 // TBC - Display suitable warning alert and redirect to Index               
-                return NotFound();
+                Alert("Student Was Not Found", AlertType.info);
+                return RedirectToAction(nameof(Index));
             }     
             
             // pass student to view for deletion confirmation
@@ -144,7 +152,8 @@ namespace SMS.Web.Controllers
             if (s == null)
             {
                 // TBC - Display suitable warning alert and redirect to Index               
-                return NotFound();
+                Alert("Student Was Not Found", AlertType.info);
+                return RedirectToAction(nameof(Index));
             }
 
             // create a ticket view model and set foreign key
@@ -178,7 +187,8 @@ namespace SMS.Web.Controllers
             if (ticket == null)
             {
                 // TBC - Display suitable warning alert and redirect to Index               
-                return NotFound();
+                Alert("Student Was Not Found", AlertType.info);
+                return RedirectToAction(nameof(Index));
             }     
             
             // pass ticket to view for deletion confirmation

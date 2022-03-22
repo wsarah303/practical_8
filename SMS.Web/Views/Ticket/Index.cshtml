@@ -6,9 +6,37 @@
    <!-- TBC - add an action link styled as a button to navigate to Create Action -->
    <!--       consider supplementing the button text with a suitable icon        -->  
   
-</div>
+<a asp-controller="Ticket" asp-action="Create" class="btn btn-primary btn-sm"> Create <i class="bi bi-plus"></i></a>
 
 <!-- TBC - add a table to display all open tickets and in each tickets action   -->
 <!--       column add a Close ticket button wrapped in a form to close a ticket -->
+</div>
 
-
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Issue</th>
+            <th>Student Name</th>
+            <th>Active</th>
+            <th>Created On</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var t in Model) {
+            <tr>
+                <td>@t.Id</td>
+                <td>@t.Issue</td>
+                <td>@t.Student.Name</td>
+                <td>@t.Active</td>
+                <td>@t.CreatedOn</td>
+               <td>
+                  
+                    <!-- Add delete link -->
+                    <a asp-controller="Ticket" asp-action="Close" asp-route-id=@t.Id>Close <i class="bi bi-trash"></i></a>
+                </td>
+            </tr>
+        }        
+    </tbody>
+</table>
